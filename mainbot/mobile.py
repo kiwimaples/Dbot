@@ -8,7 +8,7 @@ import os
 import time
 
 # Choose which web app to test on
-driver = webdriver.Firefox
+driver = webdriver.Chrome
 
 # Change the parameters inside the brackets of the MobileBot if you want to test in different browsers
 class MobileBot(driver):
