@@ -18,7 +18,7 @@ chrome://version
 ```
 You will see the following at the top of the screen:
 
-    **Google Chrome:** *your version of google chrome*
+    Google Chrome: your version of google chrome
 
 3. Go to [this page](https://chromedriver.storage.googleapis.com/index.html) and click the file name that is equivalent to your version of google chrome (this contains the drivers to perform the automated tests on google chrome)
 
