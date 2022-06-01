@@ -8,7 +8,7 @@ import os
 import time
 
 # Choose which web app to test on
-driver = webdriver.Chrome
+driver = webdriver.Firefox
 
 # Change the parameters inside the brackets of the MobileBot if you want to test in different browsers
 class MobileBot(driver):
@@ -69,6 +69,7 @@ class MobileBot(driver):
         homepage_to_shop_page.click()
 
     def select_item(self):
+        self.wait.until(EC.element_to_be_clickable((By.LINK_TEXT, const.shop_item)))
         shop_page_item = self.find_element_by_link_text(const.shop_item)
         shop_page_item.click()
 
@@ -136,9 +137,11 @@ class MobileBot(driver):
         to_active = self.switch_to_active_element()
 
         self.wait.until(EC.presence_of_element_located((By.ID,'zboo_keyword')))
-
+        self.wait.until(EC.element_to_be_clickable((By.ID, 'zboo_keyword')))
         non_member_zip_text = self.find_element_by_id('zboo_keyword')
+        non_member_zip_text.click()
         non_member_zip_text.send_keys(const.zip_code)
+
         non_member_zip_text.send_keys(Keys.ENTER)
 
         self.wait.until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div/div/div[3]/div/table/tbody/tr[1]/td[1]/a[1]')))
@@ -179,8 +182,11 @@ class MobileBot(driver):
         to_main = self.switch_to_active_element()
 
         self.wait.until(EC.presence_of_element_located((By.ID, 'zboo_keyword')))
+
+        self.wait.until(EC.element_to_be_clickable((By.ID, 'zboo_keyword')))
         member_zip_text = self.find_element_by_id('zboo_keyword')
         member_zip_text.send_keys(const.zip_code)
+        member_zip_text.click()
         member_zip_text.send_keys(Keys.ENTER)
 
         self.wait.until(EC.element_to_be_clickable(
@@ -219,6 +225,7 @@ class MobileBot(driver):
 
     # Goes to address book page for members
     def accounts_page(self):
+        self.wait.until(EC.element_to_be_clickable((By.LINK_TEXT, 'ACCOUNT')))
         homepage_to_account_page = self.find_element_by_link_text('ACCOUNT')
         homepage_to_account_page.click()
 

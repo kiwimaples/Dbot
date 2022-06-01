@@ -8,7 +8,7 @@ import os
 import time
 
 # Choose which web app to test on
-driver = webdriver.Chrome
+driver = webdriver.Firefox
 
 # Change the parameters inside the brackets of the DeskBot if you want to test in different browsers
 class DeskBot(driver):
@@ -55,6 +55,9 @@ class DeskBot(driver):
         self.wait.until(lambda driver: driver.execute_script('return document.readyState') == 'complete')
 
     def shop_page(self):
+        self.wait.until(lambda driver: driver.execute_script('return jQuery.active') == 0)
+        self.wait.until(lambda driver: driver.execute_script('return document.readyState') == 'complete')
+
         self.wait.until(EC.element_to_be_clickable((By.LINK_TEXT, 'SHOP')))
         homepage_to_shop_nav = self.find_element_by_link_text('SHOP')
         homepage_to_shop_nav.click()
@@ -65,6 +68,7 @@ class DeskBot(driver):
         homepage_to_shop_page.click()
 
     def select_item(self):
+        self.wait.until(EC.element_to_be_clickable((By.LINK_TEXT, const.shop_item)))
         shop_page_item = self.find_element_by_link_text(const.shop_item)
         shop_page_item.click()
 
@@ -132,9 +136,10 @@ class DeskBot(driver):
 
         self.wait.until(EC.presence_of_element_located((By.ID,'zboo_keyword')))
 
+        self.wait.until(EC.element_to_be_clickable((By.ID, 'zboo_keyword')))
         non_member_zip_text = self.find_element_by_id('zboo_keyword')
         non_member_zip_text.send_keys(const.zip_code)
-        non_member_zip_text.send_keys(Keys.ENTER)
+        non_member_zip_text.send_keys(Keys.ENTER) # recent bug discovery with firefox
 
         self.wait.until(EC.element_to_be_clickable((By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/table/tbody/tr[1]/td[1]/a[1]/span')))
         non_member_address_1 = self.find_element_by_xpath('/html/body/div/div[1]/div[3]/div[2]/div/table/tbody/tr[1]/td[1]/a[1]/span')
@@ -169,9 +174,10 @@ class DeskBot(driver):
 
         self.wait.until(EC.presence_of_element_located((By.ID, 'zboo_keyword')))
 
+        self.wait.until(EC.element_to_be_clickable((By.ID, 'zboo_keyword')))
         member_zip_text = self.find_element_by_id('zboo_keyword')
         member_zip_text.send_keys(const.zip_code)
-        member_zip_text.send_keys(Keys.ENTER)
+        member_zip_text.send_keys(Keys.ENTER) # recent bug discovery with firefox
 
         self.wait.until(EC.element_to_be_clickable(
             (By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/table/tbody/tr[1]/td[1]/a[1]/span')))
@@ -203,6 +209,7 @@ class DeskBot(driver):
 
     # Goes to address book page for members
     def account_page(self):
+        self.wait.until(EC.element_to_be_clickable((By.LINK_TEXT, 'ACCOUNT')))
         homepage_to_account_page = self.find_element_by_link_text('ACCOUNT')
         homepage_to_account_page.click()
 
