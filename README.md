@@ -1,14 +1,23 @@
 
 ## Dbot (Dempuraworks Automated Testing Bot)
-### Instructions
-1. Install Selenium in Terminal
+A Python based automation software built with selenium, currently compatible for Chrome and Firefox testing
+
+### Set up Instructions
+1. Install Selenium in Terminal (using pip or pip3)
 ```
-pip3 install selenium
+pip install selenium
 ```
 Or download and install the latest selenium version from [here](https://www.selenium.dev/downloads/)
 
-2. Download Browsers
+2. Download Browsers *(instructions below)*
+
+3. Run the program with a compatible code editor or IDE (eg: VS Code, PyCharm *etc*)
+
+4. Test scripts are classified by the number in the filename and the test case document is stored in ```Dbot/Dbot_automated_test``` where the behaviour of each sript can be referred to
+
+5. Sciprt is operated in the ```mainbot/main.py``` file for desktop based testing and ```mainbot/mobile.py``` for mobile based testing, ```mainbot/const.py``` can be used to change parameters
     
+### Driver installation instructions
 **Chrome Driver** 
 
 1. Open Google Chrome
@@ -24,7 +33,7 @@ You will see the following at the top of the screen:
 
 4. Download the file name based on your operating system
 
-5. Download the file to directory:
+5. Download or move the file to directory:
 ```Dbot/Dbot_automated_tests```
 
 6. The setup for chrome driver is complete
@@ -42,7 +51,7 @@ You will see the following at the top of the screen:
     find more details on how to work around this issue in the [macOS
     notarization](https://firefox-source-docs.mozilla.org/testing/geckodriver/Notarization.html) section of the documentation*
 
-3.  Download the file to directory:
+3.  Download or move the file to directory:
 ```Dbot/Dbot_automated_tests```
 
 4. The setup for firefox driver is complete
