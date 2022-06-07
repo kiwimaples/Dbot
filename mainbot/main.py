@@ -120,6 +120,7 @@ class DeskBot(driver):
 
     # Fill in checkout details as a non-member
     def checkout_non_member_fill_details(self):
+        driver.execute_script(self, 'window.scrollBy(0, 500)')
         non_member_order_pw = self.find_element_by_id('order_password')
         non_member_order_pw.send_keys(const.pw)
 
@@ -133,13 +134,14 @@ class DeskBot(driver):
         non_member_zip_code.click()
 
         to_iframe = self.switch_to_frame(self.find_element_by_id('iframeZipcode'))
-
         self.wait.until(EC.presence_of_element_located((By.ID,'zboo_keyword')))
 
         self.wait.until(EC.element_to_be_clickable((By.ID, 'zboo_keyword')))
         non_member_zip_text = self.find_element_by_id('zboo_keyword')
         non_member_zip_text.send_keys(const.zip_code)
-        non_member_zip_text.send_keys(Keys.ENTER) # recent bug discovery with firefox
+        self.wait.until(EC.element_to_be_clickable((By.ID, 'zboo_search_btn')))
+        time.sleep(1)
+        non_member_zip_text.send_keys(Keys.ENTER)
 
         self.wait.until(EC.element_to_be_clickable((By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/table/tbody/tr[1]/td[1]/a[1]/span')))
         non_member_address_1 = self.find_element_by_xpath('/html/body/div/div[1]/div[3]/div[2]/div/table/tbody/tr[1]/td[1]/a[1]/span')
@@ -166,6 +168,7 @@ class DeskBot(driver):
 
     # Fill in checkout details as a member
     def checkout_member_fill_details(self):
+        driver.execute_script(self, 'window.scrollBy(0, 500)')
         self.wait.until(EC.element_to_be_clickable((By.ID, 'btn_search_rzipcode')))
         address_zip_code = self.find_element_by_id('btn_search_rzipcode')
         address_zip_code.click()
@@ -177,7 +180,10 @@ class DeskBot(driver):
         self.wait.until(EC.element_to_be_clickable((By.ID, 'zboo_keyword')))
         member_zip_text = self.find_element_by_id('zboo_keyword')
         member_zip_text.send_keys(const.zip_code)
-        member_zip_text.send_keys(Keys.ENTER) # recent bug discovery with firefox
+
+        self.wait.until(EC.element_to_be_clickable((By.ID, 'zboo_search_btn')))
+        time.sleep(1)
+        member_zip_text.send_keys(Keys.ENTER)
 
         self.wait.until(EC.element_to_be_clickable(
             (By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/table/tbody/tr[1]/td[1]/a[1]/span')))
