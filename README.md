@@ -13,9 +13,9 @@ Or download and install the latest selenium version from [here](https://www.sele
 
 3. Run the program with a compatible code editor or IDE (eg: VS Code, PyCharm *etc*)
 
-4. Test scripts are classified by the number in the filename and the test case document is stored in ```Dbot/Dbot_automated_test``` where the behaviour of each sript can be referred to
+4. Test scripts are classified by the number in the filename and the test case document is stored in ```Dbot/Dbot_automated_test_scenarios``` where the behaviour of each sript can be referred to
 
-5. Sciprt is operated in the ```mainbot/main.py``` file for desktop based testing and ```mainbot/mobile.py``` for mobile based testing, ```mainbot/const.py``` can be used to change parameters
+5. Sciprt is operated in the ```source_code/desktop_test_script.py``` file for desktop based testing and ```source_code/mobile_test_script.py``` for mobile based testing, ```source_code/const.py``` can be used to change parameters
     
 ### Driver installation instructions
 **Chrome Driver** 
