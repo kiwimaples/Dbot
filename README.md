@@ -34,7 +34,7 @@ You will see the following at the top of the screen:
 4. Download the file name based on your operating system
 
 5. Download or move the file to directory:
-```Dbot/Dbot_automated_tests```
+```Dbot/Dbot_automated_test_scenarios```
 
 6. The setup for chrome driver is complete
 
@@ -52,7 +52,7 @@ You will see the following at the top of the screen:
     notarization](https://firefox-source-docs.mozilla.org/testing/geckodriver/Notarization.html) section of the documentation*
 
 3.  Download or move the file to directory:
-```Dbot/Dbot_automated_tests```
+```Dbot/Dbot_automated_test_scenarios```
 
 4. The setup for firefox driver is complete
 
